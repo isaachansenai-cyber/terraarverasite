@@ -136,6 +136,13 @@ section[id], .anchor { scroll-margin-top: 5rem; }
   border-radius: var(--radius);
   box-shadow: 0 24px 48px -24px rgba(43, 35, 23, .35);
 }
+.ai-note {
+  margin-top: .5rem;
+  font-size: .72rem;
+  color: var(--stone);
+  text-align: right;
+  font-style: italic;
+}
 
 @media (min-width: 860px) {
   .hero { padding-block: 4rem 5rem; }
@@ -220,28 +227,6 @@ section[id], .anchor { scroll-margin-top: 5rem; }
 .mat-benefits strong { color: var(--ink); }
 
 .mats .center:last-child, .why .center:last-child { margin-top: 2.5rem; }
-
-/* ================= Trust ================= */
-.trust { padding-block: 4rem; }
-
-.badges {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: .75rem;
-  margin-top: 1rem;
-}
-.badge {
-  border: 1.5px solid var(--line);
-  border-radius: 999px;
-  padding: .45rem 1.1rem;
-  font-size: .8rem;
-  font-weight: 600;
-  letter-spacing: .04em;
-  text-transform: uppercase;
-  color: var(--stone);
-  background: var(--sand);
-}
 
 /* ================= Email capture ================= */
 .signup { background: var(--leaf); color: var(--cream); padding-block: 4rem; }
