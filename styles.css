@@ -8,7 +8,6 @@
   --ink: #2b2317;         /* body text */
   --stone: #6e6353;       /* muted text */
   --line: #e3d9c6;
-  --star: #d9a441;
   --radius: 14px;
   --font-serif: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
   --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
@@ -194,7 +193,17 @@ section[id], .anchor { scroll-margin-top: 5rem; }
 .card-body h3 { margin-bottom: .15rem; }
 .card-note { margin: 0 0 1rem; color: var(--stone); font-size: .88rem; }
 .card-foot { margin-top: auto; display: flex; align-items: center; justify-content: space-between; gap: 1rem; }
-.price { font-family: var(--font-serif); font-size: 1.2rem; font-weight: 700; }
+.coming-soon {
+  font-size: .72rem;
+  font-weight: 700;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: var(--clay);
+  background: var(--sand);
+  border-radius: 999px;
+  padding: .3rem .8rem;
+  white-space: nowrap;
+}
 
 /* ================= Mats benefits ================= */
 .mat-benefits {
@@ -214,26 +223,13 @@ section[id], .anchor { scroll-margin-top: 5rem; }
 
 /* ================= Trust ================= */
 .trust { padding-block: 4rem; }
-.testimonials { display: grid; gap: 1.25rem; margin-top: 2.25rem; }
-@media (min-width: 800px) { .testimonials { grid-template-columns: repeat(3, 1fr); } }
-
-.testimonial {
-  margin: 0;
-  background: #fff;
-  border: 1px solid var(--line);
-  border-radius: var(--radius);
-  padding: 1.5rem;
-}
-.stars { color: var(--star); letter-spacing: .15em; margin-bottom: .6rem; }
-.testimonial p { margin: 0 0 .9rem; font-size: .95rem; }
-.testimonial cite { font-style: normal; font-size: .85rem; color: var(--stone); }
 
 .badges {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   gap: .75rem;
-  margin-top: 2.5rem;
+  margin-top: 1rem;
 }
 .badge {
   border: 1.5px solid var(--line);
@@ -254,7 +250,8 @@ section[id], .anchor { scroll-margin-top: 5rem; }
 .signup p { color: rgba(250, 246, 238, .85); }
 
 .signup-form { display: grid; gap: .75rem; margin-top: 1.5rem; }
-.signup-form input {
+.signup-form input,
+.signup-form select {
   width: 100%;
   padding: .9rem 1.2rem;
   border-radius: 999px;
@@ -262,15 +259,20 @@ section[id], .anchor { scroll-margin-top: 5rem; }
   background: rgba(255, 255, 255, .12);
   color: #fff;
   font-size: 1rem;
+  font-family: inherit;
 }
+.signup-form select { appearance: none; cursor: pointer; }
+.signup-form select:invalid { color: rgba(250, 246, 238, .6); }
+.signup-form option { color: var(--ink); background: var(--cream); }
 .signup-form input::placeholder { color: rgba(250, 246, 238, .6); }
-.signup-form input:focus { outline: 2px solid var(--cream); outline-offset: 2px; }
+.signup-form input:focus,
+.signup-form select:focus { outline: 2px solid var(--cream); outline-offset: 2px; }
 .signup-form .btn-primary { background: var(--clay); }
 .signup-form .btn-primary:hover { background: #a2552e; }
 .signup-confirm { font-weight: 600; color: #fff; margin-top: 1.5rem; }
 
-@media (min-width: 560px) {
-  .signup-form { grid-template-columns: 1fr auto; }
+@media (min-width: 700px) {
+  .signup-form { grid-template-columns: 1.3fr 1fr auto; }
 }
 
 /* ================= Footer ================= */
