@@ -203,9 +203,21 @@
           </select>
           <button type="submit" class="btn btn-primary">Join the waitlist</button>
         </form>
-        <p class="signup-confirm" hidden>You're on the list &mdash; we'll email you before launch.</p>
       </div>
     </section>
+
+    <!-- Success popup shown after a waitlist signup -->
+    <div class="popup-overlay" id="signup-popup" hidden>
+      <div class="popup-card" role="alertdialog" aria-modal="true" aria-labelledby="popup-title">
+        <svg class="popup-check" viewBox="0 0 64 64" aria-hidden="true">
+          <circle cx="32" cy="32" r="30" fill="var(--leaf)"/>
+          <path d="M20 33l9 9 16-19" fill="none" stroke="var(--cream)" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <h3 id="popup-title">You're on the list!</h3>
+        <p>Your email was submitted successfully. We'll reach out with early access and your 10% code before the public launch.</p>
+        <button type="button" class="btn btn-primary popup-close">Done</button>
+      </div>
+    </div>
 
   </main>
 
@@ -226,11 +238,38 @@
   </footer>
 
   <script>
-    document.querySelector('.signup-form').addEventListener('submit', function (e) {
+    const SUPABASE_URL = 'https://uqelqixvwhvnwnusrvix.supabase.co';
+    const SUPABASE_KEY = 'sb_publishable_9nKIeiXH7aJwy0ypB6wo5Q_fwqo6XiC';
+
+    const popup = document.getElementById('signup-popup');
+
+    document.querySelector('.signup-form').addEventListener('submit', async function (e) {
       e.preventDefault();
-      this.hidden = true;
-      document.querySelector('.signup-confirm').hidden = false;
+      const res = await fetch(`${SUPABASE_URL}/rest/v1/waitlist_signups`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'apikey': SUPABASE_KEY,
+          'Authorization': `Bearer ${SUPABASE_KEY}`
+        },
+        body: JSON.stringify({
+          email: this.email.value,
+          interest: this.interest.value
+        })
+      });
+      if (res.ok || res.status === 409) {   // 409 = already signed up, treat as success
+        this.reset();
+        popup.hidden = false;
+        popup.querySelector('.popup-close').focus();
+      } else {
+        alert('Something went wrong — please try again.');
+      }
     });
+
+    function closePopup() { popup.hidden = true; }
+    popup.querySelector('.popup-close').addEventListener('click', closePopup);
+    popup.addEventListener('click', function (e) { if (e.target === popup) closePopup(); });
+    document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && !popup.hidden) closePopup(); });
   </script>
 </body>
 </html>

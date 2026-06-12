@@ -269,7 +269,38 @@ section[id], .anchor { scroll-margin-top: 5rem; }
 .signup-form select:focus { outline: 2px solid var(--cream); outline-offset: 2px; }
 .signup-form .btn-primary { background: var(--clay); }
 .signup-form .btn-primary:hover { background: #a2552e; }
-.signup-confirm { font-weight: 600; color: #fff; margin-top: 1.5rem; }
+
+/* ================= Signup success popup ================= */
+.popup-overlay[hidden] { display: none; }
+.popup-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+  background: rgba(43, 35, 23, .55);
+  backdrop-filter: blur(3px);
+}
+.popup-card {
+  background: var(--cream);
+  border-radius: var(--radius);
+  padding: 2.5rem 2rem 2rem;
+  max-width: 26rem;
+  width: 100%;
+  text-align: center;
+  box-shadow: 0 32px 64px -24px rgba(43, 35, 23, .5);
+  animation: popup-in .25s ease-out;
+}
+.popup-check { width: 64px; height: 64px; margin: 0 auto 1.25rem; }
+.popup-card h3 { font-size: 1.5rem; margin-bottom: .5rem; }
+.popup-card p { color: var(--stone); margin: 0 0 1.5rem; }
+
+@keyframes popup-in {
+  from { opacity: 0; transform: translateY(12px) scale(.96); }
+  to { opacity: 1; transform: none; }
+}
 
 @media (min-width: 700px) {
   .signup-form { grid-template-columns: 1.3fr 1fr auto; }
