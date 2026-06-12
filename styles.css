@@ -1,0 +1,282 @@
+/* ================= Terraarvera — brand tokens ================= */
+:root {
+  --leaf: #3e4d2c;        /* deep banana-leaf green (primary) */
+  --leaf-dark: #2f3b21;
+  --clay: #b9663b;        /* terracotta accent */
+  --cream: #faf6ee;       /* page background */
+  --sand: #f1e9da;        /* alt section background */
+  --ink: #2b2317;         /* body text */
+  --stone: #6e6353;       /* muted text */
+  --line: #e3d9c6;
+  --star: #d9a441;
+  --radius: 14px;
+  --font-serif: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
+  --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  font-family: var(--font-sans);
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--ink);
+  background-color: var(--cream);
+  /* subtle woven-paper texture, pure CSS so nothing extra to download */
+  background-image:
+    repeating-linear-gradient(0deg, rgba(110, 99, 83, .025) 0 1px, transparent 1px 5px),
+    repeating-linear-gradient(90deg, rgba(110, 99, 83, .02) 0 1px, transparent 1px 5px);
+}
+
+img { display: block; max-width: 100%; height: auto; }
+
+.container { width: min(100% - 2.5rem, 68rem); margin-inline: auto; }
+.center { text-align: center; }
+
+h1, h2, h3 { font-family: var(--font-serif); font-weight: 600; line-height: 1.15; margin: 0 0 .6em; }
+h1 { font-size: clamp(2rem, 5.5vw, 3.25rem); letter-spacing: -.01em; }
+h2 { font-size: clamp(1.6rem, 4vw, 2.4rem); }
+h3 { font-size: 1.15rem; }
+
+.eyebrow {
+  font-size: .78rem;
+  font-weight: 700;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--clay);
+  margin: 0 0 .75rem;
+}
+
+.section-lede {
+  color: var(--stone);
+  max-width: 38rem;
+  margin: 0 auto 2rem;
+}
+
+.visually-hidden {
+  position: absolute; width: 1px; height: 1px;
+  margin: -1px; padding: 0; overflow: hidden;
+  clip: rect(0 0 0 0); white-space: nowrap; border: 0;
+}
+
+/* offset in-page anchors below the sticky header */
+section[id], .anchor { scroll-margin-top: 5rem; }
+
+/* ================= Buttons ================= */
+.btn {
+  display: inline-block;
+  padding: .85rem 1.6rem;
+  border-radius: 999px;
+  font-weight: 600;
+  font-size: .95rem;
+  text-decoration: none;
+  text-align: center;
+  border: 1.5px solid transparent;
+  cursor: pointer;
+  transition: background-color .15s ease, color .15s ease, border-color .15s ease;
+}
+.btn-primary { background: var(--leaf); color: var(--cream); }
+.btn-primary:hover { background: var(--leaf-dark); }
+.btn-ghost { color: var(--leaf); border-color: transparent; padding-inline: .5rem; }
+.btn-ghost:hover { color: var(--leaf-dark); text-decoration: underline; }
+.btn-outline { color: var(--leaf); border-color: var(--leaf); background: transparent; }
+.btn-outline:hover { background: var(--leaf); color: var(--cream); }
+.btn-sm { padding: .5rem 1.1rem; font-size: .85rem; }
+
+/* ================= Header ================= */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: rgba(250, 246, 238, .92);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--line);
+}
+.header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding-block: .7rem;
+}
+.logo { display: flex; align-items: center; gap: .55rem; text-decoration: none; color: var(--ink); }
+.logo-mark { width: 32px; height: 32px; flex: none; }
+.logo-word { font-family: var(--font-serif); font-size: 1.25rem; font-weight: 700; letter-spacing: .02em; }
+
+.site-nav { display: none; gap: 1.6rem; }
+.site-nav a {
+  color: var(--ink);
+  text-decoration: none;
+  font-size: .92rem;
+  font-weight: 500;
+}
+.site-nav a:hover { color: var(--clay); }
+
+@media (min-width: 760px) {
+  .site-nav { display: flex; }
+}
+
+/* ================= Hero ================= */
+.hero { padding-block: 2.5rem 3.5rem; }
+.hero-grid { display: grid; gap: 2rem; align-items: center; }
+.hero-copy .sub { color: var(--stone); font-size: 1.05rem; max-width: 34rem; margin: 0 0 1.75rem; }
+.cta-row { display: flex; flex-wrap: wrap; align-items: center; gap: .9rem 1.25rem; margin-bottom: 1.5rem; }
+
+.hero-proof {
+  display: flex; flex-wrap: wrap; gap: .4rem 1.5rem;
+  list-style: none; margin: 0; padding: 0;
+  font-size: .85rem; color: var(--stone);
+}
+.hero-proof li::before { content: "\2713\0020"; color: var(--leaf); font-weight: 700; }
+
+.hero-photo { margin: 0; }
+.hero-photo img {
+  width: 100%;
+  border-radius: var(--radius);
+  box-shadow: 0 24px 48px -24px rgba(43, 35, 23, .35);
+}
+
+@media (min-width: 860px) {
+  .hero { padding-block: 4rem 5rem; }
+  .hero-grid { grid-template-columns: 1.05fr 1fr; gap: 3.5rem; }
+}
+
+/* ================= Why banana fiber ================= */
+.why { background: var(--sand); padding-block: 4rem; }
+.why-grid {
+  display: grid;
+  gap: 1.25rem;
+  list-style: none;
+  margin: 0 0 2.5rem;
+  padding: 0;
+}
+.why-card {
+  background: var(--cream);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 1.5rem;
+}
+.why-card svg { width: 30px; height: 30px; color: var(--clay); margin-bottom: .75rem; }
+.why-card h3 { margin-bottom: .35rem; }
+.why-card p { margin: 0; color: var(--stone); font-size: .94rem; }
+
+@media (min-width: 640px) { .why-grid { grid-template-columns: 1fr 1fr; } }
+@media (min-width: 1000px) { .why-grid { grid-template-columns: repeat(4, 1fr); } }
+
+/* ================= Product grids ================= */
+.products, .mats { padding-block: 4rem; }
+.mats { background: var(--sand); }
+
+.product-grid { display: grid; gap: 1.5rem; margin-top: 2.25rem; }
+@media (min-width: 640px) { .product-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (min-width: 960px) {
+  .product-grid { grid-template-columns: repeat(3, 1fr); }
+  .product-grid.two-up { grid-template-columns: repeat(2, 1fr); width: min(100%, 46rem); margin-inline: auto; }
+}
+
+.card {
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: box-shadow .2s ease, transform .2s ease;
+}
+.card:hover {
+  box-shadow: 0 16px 32px -16px rgba(43, 35, 23, .25);
+  transform: translateY(-3px);
+}
+.card-media img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; }
+.card-body { padding: 1.1rem 1.25rem 1.35rem; display: flex; flex-direction: column; flex: 1; }
+.card-body h3 { margin-bottom: .15rem; }
+.card-note { margin: 0 0 1rem; color: var(--stone); font-size: .88rem; }
+.card-foot { margin-top: auto; display: flex; align-items: center; justify-content: space-between; gap: 1rem; }
+.price { font-family: var(--font-serif); font-size: 1.2rem; font-weight: 700; }
+
+/* ================= Mats benefits ================= */
+.mat-benefits {
+  list-style: none;
+  margin: 0 auto;
+  padding: 0;
+  max-width: 36rem;
+  display: grid;
+  gap: .5rem;
+  font-size: .95rem;
+  color: var(--stone);
+}
+.mat-benefits li::before { content: "\2713\0020\0020"; color: var(--leaf); font-weight: 700; }
+.mat-benefits strong { color: var(--ink); }
+
+.mats .center:last-child, .why .center:last-child { margin-top: 2.5rem; }
+
+/* ================= Trust ================= */
+.trust { padding-block: 4rem; }
+.testimonials { display: grid; gap: 1.25rem; margin-top: 2.25rem; }
+@media (min-width: 800px) { .testimonials { grid-template-columns: repeat(3, 1fr); } }
+
+.testimonial {
+  margin: 0;
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 1.5rem;
+}
+.stars { color: var(--star); letter-spacing: .15em; margin-bottom: .6rem; }
+.testimonial p { margin: 0 0 .9rem; font-size: .95rem; }
+.testimonial cite { font-style: normal; font-size: .85rem; color: var(--stone); }
+
+.badges {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: .75rem;
+  margin-top: 2.5rem;
+}
+.badge {
+  border: 1.5px solid var(--line);
+  border-radius: 999px;
+  padding: .45rem 1.1rem;
+  font-size: .8rem;
+  font-weight: 600;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+  color: var(--stone);
+  background: var(--sand);
+}
+
+/* ================= Email capture ================= */
+.signup { background: var(--leaf); color: var(--cream); padding-block: 4rem; }
+.signup-inner { max-width: 36rem; text-align: center; }
+.signup h2 { color: #fff; }
+.signup p { color: rgba(250, 246, 238, .85); }
+
+.signup-form { display: grid; gap: .75rem; margin-top: 1.5rem; }
+.signup-form input {
+  width: 100%;
+  padding: .9rem 1.2rem;
+  border-radius: 999px;
+  border: 1.5px solid rgba(250, 246, 238, .4);
+  background: rgba(255, 255, 255, .12);
+  color: #fff;
+  font-size: 1rem;
+}
+.signup-form input::placeholder { color: rgba(250, 246, 238, .6); }
+.signup-form input:focus { outline: 2px solid var(--cream); outline-offset: 2px; }
+.signup-form .btn-primary { background: var(--clay); }
+.signup-form .btn-primary:hover { background: #a2552e; }
+.signup-confirm { font-weight: 600; color: #fff; margin-top: 1.5rem; }
+
+@media (min-width: 560px) {
+  .signup-form { grid-template-columns: 1fr auto; }
+}
+
+/* ================= Footer ================= */
+.site-footer { border-top: 1px solid var(--line); padding-block: 2.5rem; }
+.footer-inner { display: grid; gap: 1rem; text-align: center; justify-items: center; }
+.site-footer nav { display: flex; flex-wrap: wrap; justify-content: center; gap: 1.5rem; }
+.site-footer nav a { color: var(--stone); text-decoration: none; font-size: .9rem; }
+.site-footer nav a:hover { color: var(--clay); }
+.fineprint { margin: 0; font-size: .8rem; color: var(--stone); }
